@@ -95,5 +95,3 @@ function geol_albums_init(){
 function geol_albums_vider_tables($nom_meta_base_version) {
 	effacer_meta($nom_meta_base_version);
 }
-
-?>

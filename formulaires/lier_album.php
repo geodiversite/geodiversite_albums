@@ -44,5 +44,3 @@ function formulaires_lier_album_traiter($id_article){
 	
 	return $message;
 }
-
-?>

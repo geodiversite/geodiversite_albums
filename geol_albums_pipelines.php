@@ -16,5 +16,3 @@ function geol_albums_insert_head($flux){
 	$flux .= selecteurgenerique_verifier_js($flux);
 	return $flux;
 }
-
-?>

@@ -1,10 +1,4 @@
 <BOUCLE_contenu_album(COLLECTIONS){id_collection}>
-[(#REM) Fil d'Ariane ]
-<ol id="hierarchie">
-	<li><a href="#URL_PAGE{albums_tous}"><:collection:titre_collections:></a></li>
-	[<li class="on"><strong>(#TITRE|couper{80})</strong></li>]
-</ol>
-
 <div class="contenu-principal">
 	<div class="cartouche">
 		<h1 class="h1 #EDIT{titre}"><span>#TITRE</span></h1>
@@ -26,13 +20,11 @@
 	</BOUCLE_gis>
 
 	[(#REM) Articles de l'album ]
-	[(#INCLURE{fond=liste/articles-vignette,
+	[(#INCLURE{fond=inclure/liste/articles-vignette,
 		id_collection,
 		ajax,
 		env,
 		par=rang,
-		largeur=200,
-		hauteur=200,
 		info_texte=non,
 		info_auteur=non})]
 </div>

@@ -1,0 +1,17 @@
+<B_albums>
+<div class="liste articles albums">
+	#ANCRE_PAGINATION
+	<h2 class="h2"><:collection:titre_collections:>[ ((#GRAND_TOTAL))]</h2>
+	<div class="liens_options">
+		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#ENV{grid,3},self=#SELF,objets=<:collection:titre_collections|strtolower:>})]
+	</div>
+	<ul class="liste-items grid-[(#ENV{grid,3})]-small-[(#ENV{grid_small,2})] has-gutter-[(#ENV{grid_gutter,l})]">
+		<BOUCLE_albums(COLLECTIONS){id_auteur?}{par num titre,titre}{pagination #ENV{pas,#ENV{grid,3}|mult{3}}}>
+		<li class="item[ (#TYPE_COLLECTION)]">
+			[(#INCLURE{fond=inclure/resume/album-vignette,id_collection,largeur,hauteur,info_texte})]
+		</li>
+		</BOUCLE_albums>
+	</ul>
+	[<p class="pagination">(#PAGINATION{page_precedent_suivant,separateur=' ',label_precedent='<',label_suivant='>'})</p>]
+</div>
+</B_albums>

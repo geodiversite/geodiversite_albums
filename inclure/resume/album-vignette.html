@@ -1,6 +1,6 @@
 [(#REM) 
 	Parametres :
-	-* largeur : de l'image (538 par défaut)
+	-* largeur : de l'image (sans limite par defaut)
 	-* hauteur : de l'image (sans limite par defaut)
 	-* info_titre : si !=non afficher le titre
 	-* info_texte : si !=non afficher le descriptif
@@ -15,7 +15,7 @@
 <h3 class="titre">#TITRE</h3>]
 
 [<a href="#URL_COLLECTION">
-	(#LOGO_COLLECTION|image_reduire{#ENV{largeur,538},#ENV{hauteur,0}})
+	(#LOGO_COLLECTION|image_reduire{#ENV{largeur,0},#ENV{hauteur,0}})
 </a>]
 
 <div class="info_media">

@@ -3,16 +3,16 @@
 <BOUCLE_admin(AUTEURS){tout}{id_auteur=#ID_ADMIN}>
 	<li class="item vcard">
 		<a href="#URL_AUTEUR">
-			<span class="titre fn">#NOM</span>
 			[(#PLUGIN{gravatar}|oui)[(#MODELE{gravatar,id_auteur,largeur=30})]]
+			<span class="titre fn">#NOM</span>
 		</a>
 	</li>
 </BOUCLE_admin>
-<BOUCLE_auteurs(AUTEURS){tout}{id_collection}{id_auteur!=#ID_ADMIN}{par nom}{pagination 3}>
+<BOUCLE_auteurs(AUTEURS){tout}{id_collection}{id_auteur!=#ID_ADMIN}{par nom}{pagination 30}>
 	<li class="item vcard">
 		<a href="#URL_AUTEUR">
-			<span class="titre fn">#NOM</span>
 			[(#PLUGIN{gravatar}|oui)[(#MODELE{gravatar,id_auteur,largeur=30})]]
+			<span class="titre fn">#NOM</span>
 		</a>
 	</li>
 </BOUCLE_auteurs>

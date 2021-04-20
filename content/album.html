@@ -3,9 +3,48 @@
 	<div class="cartouche">
 		<h1 class="h1 #EDIT{titre}"><span>#TITRE</span></h1>
 	</div>
-	
 
 	[<div class="#EDIT{descriptif} chapo">(#DESCRIPTIF|sinon{<:geol:pas_description:>})</div>]
+
+	<div class="menu auteurs">
+		<BOUCLE_total(AUTEURS){id_collection} />
+		<h2 class="h2"><span><:geol:contributeurs_les:>[ ((#GRAND_TOTAL))]</span></h2><//B_total>
+		<INCLURE{fond=inclure/album_liste_auteurs,id_admin,ajax,env} />
+		<BOUCLE_session(CONDITION){si #SESSION{statut}|oui}>
+		[(#REM) Album perso ? On propose à l'admin d'ouvrir l'album ! ]
+		[(#SESSION{id_auteur}|=={#ID_ADMIN}|et{#TYPE_COLLECTION|=={perso}}|oui)
+		<p class="explication"><:geol_albums:explication_ouvrir:></p>
+		[(#BOUTON_ACTION{<:geol_albums:bouton_ouvrir:>,#URL_ACTION_AUTEUR{editer_collection,#ID_COLLECTION,#SELF}|parametre_url{type_collection,coop},ajax actions})]
+		]
+		[(#REM) Album coop, on propose de participer si l'auteur n'en fait pas déjà partie ]
+		#SET{membres,#ARRAY}
+		<BOUCLE_test(CONDITION){si #TYPE_COLLECTION|=={coop}|oui}>
+		<BOUCLE_membres(AUTEURS){id_collection}{tout}>#SET{membres,#GET{membres}|push{#ID_AUTEUR}}</BOUCLE_membres>
+		[(#SESSION{id_auteur}|in_array{#GET{membres}}|non)
+		<p class="explication"><:collection:explication_participer:></p>
+		[(#BOUTON_ACTION{<:collection:titre_participer:>,#URL_ACTION_AUTEUR{associer_auteur_collection,lier/#ID_COLLECTION,#SELF},ajax actions})]
+		]
+		[(#SESSION{id_auteur}|!={#ID_ADMIN}|et{#SESSION{id_auteur}|in_array{#GET{membres}}|oui})
+		<p class="explication"><:collection:explication_participer_non:></p>
+		[(#BOUTON_ACTION{<:geol_albums:bouton_quitter:>,#URL_ACTION_AUTEUR{associer_auteur_collection,delier/#ID_COLLECTION,#SELF},ajax actions})]
+		]
+		</BOUCLE_test>
+		[(#REM) Proposer à l'admin de générer une balade si le plugin geol_balades est présent ]
+		[(#SESSION{id_auteur}|=={#ID_ADMIN}|et{#TYPE_COLLECTION|=={perso}}|et{#PLUGIN{geol_balades}}|oui)
+		<p class="explication"><:geol_balades:explication_album_balader:></p>
+		[(#BOUTON_ACTION{<:geol_balades:bouton_balader:>,#URL_ACTION_AUTEUR{editer_collection,#ID_COLLECTION,#URL_PAGE{editer_balade,id_album=#ID_COLLECTION}}|parametre_url{type_collection,balade},ajax actions})]
+		]
+		[(#REM) Proposer à l'admin de modifier la balade si le plugin geol_balades est présent ]
+		[(#SESSION{id_auteur}|=={#ID_ADMIN}|et{#TYPE_COLLECTION|=={balade}}|et{#PLUGIN{geol_balades}}|oui)
+		<p class="actions">\[ <a href="#URL_PAGE{editer_balade,id_album=#ID_COLLECTION}"><:geol_balades:modifier_balade:></a> \]</p>
+		]
+		[(#REM) Proposer à l'admin de supprimer l'album si pas de membres ]
+		[(#SESSION{id_auteur}|=={#ID_ADMIN}|et{#GET{membres}|count|<{2}}|oui)
+		<p class="explication"><:geol_albums:explication_supprimer:></p>
+		[(#BOUTON_ACTION{<:geol_albums:bouton_suprrimer:>,#URL_ACTION_AUTEUR{editer_collection,#ID_COLLECTION,#URL_PAGE{albums,id_auteur=#SESSION{id_auteur}}}|parametre_url{statut,poubelle},ajax actions,<:geol_albums:explication_supprimer_confirm|texte_script:>})]
+		]
+		</BOUCLE_session>
+	</div>
 	
 	[(#REM) afficher la carte si c'est une balade et si le plugin geol_balades est actif ]
 	<BOUCLE_gis(GIS gis_liens){id_collection}>

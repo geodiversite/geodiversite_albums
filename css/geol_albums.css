@@ -1,5 +1,3 @@
-/* geol_albums.css */
-
 .formulaire_creer_collection_rapide .editer_titre label { color: #666; }
 .formulaire_creer_collection_rapide .editer_titre label span.obligatoire { display: none; }
 .formulaire_lier_album .nom_objet input.text { width: auto; }

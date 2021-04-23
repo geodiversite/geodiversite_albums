@@ -16,3 +16,14 @@ function geol_albums_insert_head($flux){
 	$flux .= selecteurgenerique_verifier_js($flux);
 	return $flux;
 }
+
+/**
+ * Insertion des css du plugin dans les pages publiques
+ *
+ * @param $flux
+ * @return mixed
+ */
+function geol_albums_insert_head_css($flux) {
+	$flux .= "\n".'<link rel="stylesheet" href="'. find_in_path('css/geol_albums.css') .'" />';
+	return $flux;
+}

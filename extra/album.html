@@ -32,7 +32,7 @@
 		</div>]
 		[(#REM) Proposer à l'admin de modifier la balade si le plugin geol_balades est présent ]
 		[(#SESSION{id_auteur}|=={#ID_ADMIN}|et{#TYPE_COLLECTION|=={balade}}|et{#PLUGIN{geol_balades}}|oui)
-		<p>\[ <a href="#URL_PAGE{editer_balade,id_album=#ID_COLLECTION}"><:geol_balades:modifier_balade:></a> \]</p>
+		<div><a href="#URL_PAGE{editer_balade,id_album=#ID_COLLECTION}" class="button"><:geol_balades:modifier_balade:></a></div>
 		]
 		[(#REM) Proposer à l'admin de supprimer l'album si pas de membres ]
 		[(#SESSION{id_auteur}|=={#ID_ADMIN}|et{#GET{membres}|count|<{2}}|oui)

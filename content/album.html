@@ -1,14 +1,14 @@
 <BOUCLE_contenu_album(COLLECTIONS){id_collection}>
 <div class="contenu-principal">
 	<div class="cartouche">
-		<h1 class="h1 #EDIT{titre}"><span>#TITRE</span></h1>
+		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
 	</div>
 
 	[<div class="#EDIT{descriptif} chapo">(#DESCRIPTIF|sinon{<:geol:pas_description:>})</div>]
 
 	<div class="menu auteurs">
 		<BOUCLE_total(AUTEURS){id_collection} />
-		<h2 class="h2"><span><:geol:contributeurs_les:>[ ((#GRAND_TOTAL))]</span></h2><//B_total>
+		<h2 class="h2"><:geol:contributeurs_les:>[ ((#GRAND_TOTAL))]</h2><//B_total>
 		<INCLURE{fond=inclure/album_liste_auteurs,id_admin,ajax,env} />
 	</div>
 	

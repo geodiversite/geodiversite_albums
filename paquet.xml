@@ -1,14 +1,14 @@
 <paquet
 	prefix="geol_albums"
 	categorie="squelette"
-	version="2.1.0"
+	version="3.0.0"
 	etat="test"
-	compatibilite="[3.0.0;3.2.*]"
+	compatibilite="[3.2.0;3.2.*]"
 	logo="images/geol_albums.png"
 	schema="1.0.0"
 >	
 
-	<nom>G&eacute;odiversit&eacute; - Albums</nom>
+	<nom>Géodiversité - Albums</nom>
 	<!-- Complément albums pour Géodiversité -->
 
 	<auteur>b_b</auteur>
@@ -21,7 +21,6 @@
 	<pipeline nom="insert_head_css" inclure="geol_albums_pipelines.php" />
 	
 	<necessite nom="geol" compatibilite="[1.2.0;[" />
-	<necessite nom="collections" compatibilite="[1.4.2;[" />
 	<necessite nom="selecteurgenerique" compatibilite="[1.1.7;[" />
 
 </paquet>

@@ -15,7 +15,10 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  */
 function geol_albums_upgrade($nom_meta_base_version, $version_cible) {
 	$maj = array();
-	$maj['create'] = array(array('geol_albums_init'));
+	$maj['create'] = array(
+		array('maj_tables', array('spip_collections', 'spip_collections_liens')),
+		array('geol_albums_init')
+	);
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 }
@@ -87,11 +90,25 @@ function geol_albums_init(){
 /**
  * Fonction de désinstallation du plugin.
  * 
- * Supprime la meta d'installation du plugin
+ * Supprime les tables spip_collections et spip_collections_liens
+ * Supprime également :
+ * - les révisions potentielles de collections (spip_versions et spip_versions_fragments)
+ * - les forums attachés aux collections
+ * - les liens des auteurs liés aux collections
+ * - la meta d'installation du plugin
  * 
  * @param string $nom_meta_base_version
  * 		Le nom de la meta d'installation
  */
 function geol_albums_vider_tables($nom_meta_base_version) {
+	sql_drop_table("spip_collections");
+	sql_drop_table("spip_collections_liens");
+
+	# Nettoyer les versionnages et forums
+	sql_delete("spip_versions",              sql_in("objet", array('collection')));
+	sql_delete("spip_versions_fragments",    sql_in("objet", array('collection')));
+	sql_delete("spip_forum",                 sql_in("objet", array('collection')));
+	sql_delete("spip_auteurs_liens",         sql_in("objet", array('collection')));
+
 	effacer_meta($nom_meta_base_version);
 }

@@ -128,5 +128,3 @@ function collection_inserer() {
 
 	return $id;
 }
-
-?>

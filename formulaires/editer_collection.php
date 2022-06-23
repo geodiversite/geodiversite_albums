@@ -52,5 +52,3 @@ function formulaires_editer_collection_traiter_dist($id_collection='new', $retou
 	}
 	return $res;
 }
-
-?>

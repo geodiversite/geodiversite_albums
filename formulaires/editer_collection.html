@@ -5,7 +5,7 @@
 	<form method='post' action='#ENV{action}'><div>
 		#ACTION_FORMULAIRE{#ENV{action}}
 		<input type='hidden' name='id_collection' value='#ENV{id_collection}' />
-		<[(#VAL{ul}|saisie_balise_structure_formulaire)] class="editer-groupe">
+		<[(#DIV|sinon{ul})] class="editer-groupe">
 
 			[(#SAISIE{input,titre,obligatoire=oui,
 				label=<:collection:label_titre:>})]
@@ -26,7 +26,7 @@
 				defaut=#CONFIG{collections/type_collection_defaut},
 				data=#PIPELINE{collections_liste_types,#ARRAY}})]
 
-		</[(#VAL{ul}|saisie_balise_structure_formulaire)]>
+		</[(#DIV|sinon{ul})]>
 		[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
 		<!--extra-->
 		<p class="boutons"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>

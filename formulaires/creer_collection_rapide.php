@@ -36,6 +36,3 @@ function formulaires_creer_collection_rapide_traiter_dist($retour=''){
 	}
 	return $res;
 }
-
-
-?>

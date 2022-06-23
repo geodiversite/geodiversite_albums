@@ -61,5 +61,3 @@ function action_associer_auteur_collection_dist($arg=null) {
 	
 	return true;
 }
-
-?>

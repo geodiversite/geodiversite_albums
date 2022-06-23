@@ -24,7 +24,3 @@ function inc_collection_organiser_rangs_dist($id_collection) {
 		$rang++;
 	}
 }
-
-
-
-?>

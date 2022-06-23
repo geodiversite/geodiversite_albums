@@ -128,5 +128,3 @@ function logo_collection($id_objet, $_id_objet, $type, $align, $fichier, $lien, 
 
 	return ('(strlen($logo='.$code.')?\'<a href="\' .' . $lien . ' . \'">\' . $logo . \'</a>\':\'\')');
 }
-
-?>

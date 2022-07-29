@@ -12,6 +12,7 @@ function formulaires_lier_album_charger($id_article){
 }
 
 function formulaires_lier_album_verifier($id_article){
+	$erreurs = [];
 	// si pas d'id, le selecteur generique n'a pas fonctionne
 	// on fait comment alors ??
 	if (!_request('pid_objet')) {

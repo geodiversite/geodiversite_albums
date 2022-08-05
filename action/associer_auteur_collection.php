@@ -37,6 +37,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 function action_associer_auteur_collection_dist($arg = null) {
 	$securiser_action = charger_fonction('securiser_action', 'inc');
 	$arg = $securiser_action();
+	$err = '';
 
 	list($action,$id_collection,$id_auteur) = explode('/', $arg);
 

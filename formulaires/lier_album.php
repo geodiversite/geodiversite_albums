@@ -26,6 +26,7 @@ function formulaires_lier_album_verifier($id_article) {
 
 function formulaires_lier_album_traiter($id_article) {
 	$id_collection = _request('pid_objet');
+	$association = false;
 
 	include_spip('inc/autoriser');
 	include_spip('action/editer_liens');

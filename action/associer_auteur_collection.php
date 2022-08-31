@@ -39,7 +39,7 @@ function action_associer_auteur_collection_dist($arg = null) {
 	$arg = $securiser_action();
 	$err = '';
 
-	list($action,$id_collection,$id_auteur) = explode('/', $arg);
+	[$action, $id_collection, $id_auteur] = explode('/', $arg);
 
 	if (!$id_auteur) {
 		$id_auteur = $GLOBALS['visiteur_session']['id_auteur'];

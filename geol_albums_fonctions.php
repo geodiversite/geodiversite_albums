@@ -66,7 +66,7 @@ function collection_admin($id = 0, $qui = []) {
  */
 function titre_type_collection($type_collection) {
 	$types = pipeline('collections_liste_types', []);
-	return $types[$type_collection] ? $types[$type_collection] : $type_collection;
+	return $types[$type_collection] ?: $type_collection;
 }
 
 /**
@@ -83,5 +83,5 @@ function titre_type_collection($type_collection) {
  */
 function titre_genre_collection($genre_collection) {
 	$genres = pipeline('collections_liste_genres', []);
-	return $genres[$genre_collection] ? $genres[$genre_collection] : $genre_collection;
+	return $genres[$genre_collection] ?: $genre_collection;
 }

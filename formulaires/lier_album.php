@@ -25,6 +25,8 @@ function formulaires_lier_album_verifier($id_article) {
 }
 
 function formulaires_lier_album_traiter($id_article) {
+	$res = [];
+	$message = [];
 	$id_collection = _request('pid_objet');
 	$association = false;
 
@@ -33,7 +35,7 @@ function formulaires_lier_album_traiter($id_article) {
 
 	if (autoriser('lierobjet', 'collection', $id_collection)) {
 		$rang = sql_countsel('spip_collections_liens', 'id_collection=' . intval($id_collection));
-		$association = objet_associer(['collection' => $id_collection], ['article' => $id_article], ['id_auteur' => $GLOBALS['visiteur_session']['id_auteur'] ? $GLOBALS['visiteur_session']['id_auteur'] : 0,'rang' => $rang + 1]);
+		$association = objet_associer(['collection' => $id_collection], ['article' => $id_article], ['id_auteur' => $GLOBALS['visiteur_session']['id_auteur'] ?: 0,'rang' => $rang + 1]);
 	}
 
 	if (!$association) {

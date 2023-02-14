@@ -46,7 +46,7 @@ function geol_albums_affiche_milieu($flux) {
 	$e = trouver_objet_exec($flux['args']['exec']);
 
 	// auteurs sur les collections
-	if (!$e['edition'] and in_array($e['type'], ['collection'])) {
+	if ($e and !$e['edition'] and in_array($e['type'], ['collection'])) {
 		$texte = recuperer_fond('prive/objets/editer/liens', [
 			'table_source' => 'auteurs',
 			'objet' => $e['type'],

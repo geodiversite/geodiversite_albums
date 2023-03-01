@@ -132,3 +132,17 @@ function geol_albums_collections_liste_genres($flux) {
 
 	return $flux;
 }
+
+/**
+ * Enlever les id_ de la table spip_collections du critère selections conditionnelles,
+ * ailleurs que sur cette table
+ *
+ * @param array $flux
+ * @return array
+ */
+function geol_albums_exclure_id_conditionnel($flux) {
+	if ($flux['args']['table'] !== 'spip_collections') {
+		$flux['data'] = array_merge($flux['data'], ['id_collection']);
+	}
+	return $flux;
+}

@@ -17,7 +17,7 @@ function formulaires_lier_album_verifier($id_article) {
 	$erreurs = [];
 	// si pas d'id, le selecteur generique n'a pas fonctionne
 	// on fait comment alors ??
-	if (!_request('pid_objet')) {
+	if (!_request('id_collection')) {
 		$erreurs['message_erreur'] = _T('collection:erreur_association_collection');
 	}
 
@@ -27,7 +27,7 @@ function formulaires_lier_album_verifier($id_article) {
 function formulaires_lier_album_traiter($id_article) {
 	$res = [];
 	$message = [];
-	$id_collection = _request('pid_objet');
+	$id_collection = _request('id_collection');
 	$association = false;
 
 	include_spip('inc/autoriser');

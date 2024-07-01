@@ -19,7 +19,11 @@ function geol_albums_upgrade($nom_meta_base_version, $version_cible) {
 	$maj = [];
 	$maj['create'] = [
 		['maj_tables', ['spip_collections', 'spip_collections_liens']],
-		['geol_albums_init']
+		['geol_albums_init'],
+		['ecrire_config', 'select2/active', 'oui']
+	];
+	$maj['1.0.1'] = [
+		['ecrire_config', 'select2/active', 'oui']
 	];
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);

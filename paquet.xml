@@ -1,7 +1,7 @@
 <paquet
 	prefix="geol_albums"
 	categorie="squelette"
-	version="4.2.2"
+	version="4.2.3"
 	etat="stable"
 	compatibilite="[4.2.0;4.*]"
 	logo="images/geol_albums.png"

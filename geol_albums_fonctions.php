@@ -68,20 +68,3 @@ function titre_type_collection($type_collection) {
 	$types = pipeline('collections_liste_types', []);
 	return $types[$type_collection] ?: $type_collection;
 }
-
-/**
- * Fonction titre_genre_collection
- *
- * Renvoie une chaîne de caractère définissant un genre de collection
- *
- * Par exemple pour le genre de collection "mixed" en base, renverra "Mix (tous les types)"
- * Ces titres sont définis par des chaînes de langue dans le pipeline "collections_liste_genres"
- *
- * @param string $genre_collection
- * 		La valeur du champ genre en base
- * @return string
- */
-function titre_genre_collection($genre_collection) {
-	$genres = pipeline('collections_liste_genres', []);
-	return $genres[$genre_collection] ?: $genre_collection;
-}

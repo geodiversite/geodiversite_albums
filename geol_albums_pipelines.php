@@ -90,34 +90,6 @@ function geol_albums_collections_liste_types($flux) {
 	return $flux;
 }
 
-
-/**
- * Insertion dans le pipeline collections_liste_genres (plugin collections)
- *
- * Ajoute les quatre genres de collections possibles :
- * - mixed
- * - image
- * - audio
- * - video
- *
- * @param array $flux
- * 		La liste des genres possibles
- * @return array
- * 		La liste des genres complétés
- */
-function geol_albums_collections_liste_genres($flux) {
-	if (!is_array($flux)) {
-		$flux = [];
-	}
-
-	$flux['mixed'] = _T('collection:genre_mixed');
-	$flux['image'] = _T('collection:genre_photo');
-	$flux['audio'] = _T('collection:genre_musique');
-	$flux['video'] = _T('collection:genre_video');
-
-	return $flux;
-}
-
 /**
  * Enlever les id_ de la table spip_collections du critère selections conditionnelles,
  * ailleurs que sur cette table

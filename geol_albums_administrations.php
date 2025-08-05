@@ -25,6 +25,12 @@ function geol_albums_upgrade($nom_meta_base_version, $version_cible) {
 	$maj['1.0.1'] = [
 		['ecrire_config', 'select2/active', 'oui']
 	];
+	$maj['1.0.2'] = [
+		['sql_alter','TABLE spip_collections DROP COLUMN genre'],
+		['sql_alter','TABLE spip_collections DROP COLUMN lang'],
+		['sql_alter','TABLE spip_collections DROP COLUMN langue_choisie'],
+		['sql_alter','TABLE spip_collections DROP COLUMN id_trad']
+	];
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 }

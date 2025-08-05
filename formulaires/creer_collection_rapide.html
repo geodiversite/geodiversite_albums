@@ -7,8 +7,6 @@
 		<div class="editer-groupe">
 			[(#CONFIG{collections/type_collection_defaut}|strlen|>{1}|oui)
 			#SAISIE{hidden,type_collection,defaut=#CONFIG{collections/type_collection_defaut}}]
-			[(#CONFIG{collections/genre_defaut}|strlen|>{1}|oui)
-			#SAISIE{hidden,genre,defaut=#CONFIG{collections/genre_defaut}}]
 			[(#SAISIE{
 				input,
 				titre,

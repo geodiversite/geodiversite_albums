@@ -30,7 +30,6 @@ function formulaires_editer_collection_charger_dist($id_collection = 'new', $ret
 	 * Récupération des valeurs de ces deux champs sinon on utilise les valeurs par défaut
 	 */
 	$valeurs['type_collection'] = _request('type_collection') ?: $valeurs['type_collection'];
-	$valeurs['genre'] = _request('genre') ?: $valeurs['genre'];
 	return $valeurs;
 }
 

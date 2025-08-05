@@ -47,25 +47,19 @@ function geol_albums_declarer_tables_objets_sql($tables) {
 			'id_admin'			 => 'bigint(21) NOT NULL',
 			'titre'              => 'text NOT NULL',
 			'descriptif'         => 'text NOT NULL',
-			'genre'				 => "varchar(25) NOT NULL DEFAULT 'mixed'", # photo, musique, video, mixed
 			'date'               => "datetime NOT NULL DEFAULT '0000-00-00 00:00:00'",
 			'type_collection'    => "varchar(25) NOT NULL DEFAULT 'perso'",
 			'statut'             => "varchar(20)  DEFAULT '0' NOT NULL",
-			'lang'               => "VARCHAR(10) NOT NULL DEFAULT ''",
-			'langue_choisie'     => "VARCHAR(3) DEFAULT 'non'",
-			'id_trad'            => 'bigint(21) NOT NULL DEFAULT 0',
 			'maj'                => 'TIMESTAMP'
 		],
 		'key' => [
 			'PRIMARY KEY'        => 'id_collection',
-			'KEY lang'           => 'lang',
-			'KEY id_trad'        => 'id_trad',
 			'KEY statut'         => 'statut',
 		],
-		'titre' => 'titre AS titre, lang AS lang',
+		'titre' => 'titre AS titre, "" AS lang',
 		'date' => 'date',
-		'champs_editables'  => ['titre', 'descriptif', 'date', 'type_collection','genre'],
-		'champs_versionnes' => ['titre', 'descriptif', 'type_collection','genre'],
+		'champs_editables'  => ['titre', 'descriptif', 'date', 'type_collection'],
+		'champs_versionnes' => ['titre', 'descriptif', 'type_collection'],
 		'rechercher_champs' => ['titre' => 8, 'descriptif' => 2],
 		'tables_jointures'  => [
 			#'spip_collections_liens'

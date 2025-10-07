@@ -8,7 +8,7 @@ function formulaires_lier_album_charger($id_article) {
 	$valeurs = [
 		'id_article' => $id_article,
 		'identifiant' => 'lier_album_' . $id_article,
-		'editable' => true
+		'editable' => true,
 	];
 	return $valeurs;
 }
@@ -35,17 +35,21 @@ function formulaires_lier_album_traiter($id_article) {
 
 	if (autoriser('lierobjet', 'collection', $id_collection)) {
 		$rang = sql_countsel('spip_collections_liens', 'id_collection=' . intval($id_collection));
-		$association = objet_associer(['collection' => $id_collection], ['article' => $id_article], ['id_auteur' => $GLOBALS['visiteur_session']['id_auteur'] ?: 0,'rang' => $rang + 1]);
+		$association = objet_associer(
+			['collection' => $id_collection],
+			['article' => $id_article],
+			['id_auteur' => $GLOBALS['visiteur_session']['id_auteur'] ?: 0, 'rang' => $rang + 1]
+		);
 	}
 
 	if (!$association) {
 		return $res['message_erreur'] = _T('collection:erreur_association_collection');
-	}else {
-		$organiser = charger_fonction('collection_organiser_rangs', 'inc');
-		$organiser($id_collection);
-		include_spip('inc/invalideur');
-		suivre_invalideur('1');
 	}
+	$organiser = charger_fonction('collection_organiser_rangs', 'inc');
+	$organiser($id_collection);
+	include_spip('inc/invalideur');
+	suivre_invalideur('1');
+
 	$message['editable'] = true;
 	$message['message_ok'] = '<script type="text/javascript">if (window.jQuery) ajaxReload("albums");</script>';
 

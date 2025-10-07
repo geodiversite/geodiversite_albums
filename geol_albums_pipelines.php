@@ -7,7 +7,6 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 /**
  * Insertion des css du plugin dans les pages publiques
  *
- * @param $flux
  * @return mixed
  */
 function geol_albums_insert_head_css($flux) {
@@ -23,7 +22,7 @@ function geol_albums_insert_head_css($flux) {
  *
  * @param array $flux
  * 		Le contexte du pipeline
- * @return array $flux
+ * @return array
  * 		Le contexte du pipeline complété
  */
 function geol_albums_affiche_milieu($flux) {
@@ -35,7 +34,7 @@ function geol_albums_affiche_milieu($flux) {
 		$texte = recuperer_fond('prive/objets/editer/liens', [
 			'table_source' => 'auteurs',
 			'objet' => $e['type'],
-			'id_objet' => $flux['args'][$e['id_table_objet']]
+			'id_objet' => $flux['args'][$e['id_table_objet']],
 		]);
 	}
 
@@ -55,7 +54,6 @@ function geol_albums_affiche_milieu($flux) {
  *
  * Optimiser la base de données : collections à la poubelle, liens orphelins sur les collections
  *
- * @param int $n
  * @return int
  */
 function collections_optimiser_base_disparus($flux) {
@@ -76,7 +74,7 @@ function collections_optimiser_base_disparus($flux) {
  *
  * @param array $flux
  * 		La liste des types de collections disponibles
- * @return array $flux
+ * @return array
  * 		La liste des types de collections complétée
  */
 function geol_albums_collections_liste_types($flux) {
@@ -89,7 +87,6 @@ function geol_albums_collections_liste_types($flux) {
 
 	return $flux;
 }
-
 
 /**
  * Insertion dans le pipeline collections_liste_genres (plugin collections)

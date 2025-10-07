@@ -47,20 +47,19 @@ function balise_LOGO_COLLECTION_dist($p) {
 				$n = $a[0]->texte;
 				if (is_numeric($n)) {
 					$coord[] = $n;
-				} elseif (in_array($n, ['top','left','right','center','bottom'])) {
+				} elseif (in_array($n, ['top', 'left', 'right', 'center', 'bottom'])) {
 					$align = $n;
-				} elseif (in_array($n, ['auto','icone','apercu','vignette'])) {
+				} elseif (in_array($n, ['auto', 'icone', 'apercu', 'vignette'])) {
 					$mode_logo = $n;
 				}
-			}
-			else {
-				$lien =  calculer_liste($a, $p->descr, $p->boucles, $p->id_boucle);
+			} else {
+				$lien = calculer_liste($a, $p->descr, $p->boucles, $p->id_boucle);
 			}
 		}
 	}
 
-	$coord_x = !$coord  ? 0 : intval(array_shift($coord));
-	$coord_y = !$coord  ? 0 : intval(array_shift($coord));
+	$coord_x = !$coord ? 0 : intval(array_shift($coord));
+	$coord_y = !$coord ? 0 : intval(array_shift($coord));
 
 	if ($p->etoile === '*') {
 		include_spip('balise/url_');
@@ -96,7 +95,7 @@ function balise_LOGO_COLLECTION_dist($p) {
  *
  * @param string $id_objet
  * 		Le nom du champ de l'identifiant numérique de la collection (id_collection)
- * @param int $id_objet
+ * @param int $_id_objet
  * 		L'identifiant numérique de la collection dont on cherche le logo
  * @param string $type
  * 		Le type d'objet dont on cherche le logo (collection)
@@ -108,9 +107,8 @@ function balise_LOGO_COLLECTION_dist($p) {
  * 		URL facultative d'un lien entourant le logo
  * @param Champ $p
  * @param string $suite
- * @return string $code
+ * @return string
  * 		Le code html à afficher pour le logo
- *
  */
 function logo_collection($id_objet, $_id_objet, $type, $align, $fichier, $lien, $p, $suite) {
 	$code = "quete_logo('$id_objet', '" .
@@ -135,5 +133,5 @@ function logo_collection($id_objet, $_id_objet, $type, $align, $fichier, $lien, 
 		return $code;
 	}
 
-	return ('(strlen($logo=' . $code . ')?\'<a href="\' .' . $lien . ' . \'">\' . $logo . \'</a>\':\'\')');
+	return '(strlen($logo=' . $code . ')?\'<a href="\' .' . $lien . ' . \'">\' . $logo . \'</a>\':\'\')';
 }

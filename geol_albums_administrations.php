@@ -4,7 +4,6 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
-
 /**
  * Fonction d'installation et de mise à jour du plugin.
  *
@@ -20,16 +19,14 @@ function geol_albums_upgrade($nom_meta_base_version, $version_cible) {
 	$maj['create'] = [
 		['maj_tables', ['spip_collections', 'spip_collections_liens']],
 		['geol_albums_init'],
-		['ecrire_config', 'select2/active', 'oui']
+		['ecrire_config', 'select2/active', 'oui'],
 	];
-	$maj['1.0.1'] = [
-		['ecrire_config', 'select2/active', 'oui']
-	];
+	$maj['1.0.1'] = [['ecrire_config', 'select2/active', 'oui']];
 	$maj['1.0.2'] = [
-		['sql_alter','TABLE spip_collections DROP COLUMN genre'],
-		['sql_alter','TABLE spip_collections DROP COLUMN lang'],
-		['sql_alter','TABLE spip_collections DROP COLUMN langue_choisie'],
-		['sql_alter','TABLE spip_collections DROP COLUMN id_trad']
+		['sql_alter', 'TABLE spip_collections DROP COLUMN genre'],
+		['sql_alter', 'TABLE spip_collections DROP COLUMN lang'],
+		['sql_alter', 'TABLE spip_collections DROP COLUMN langue_choisie'],
+		['sql_alter', 'TABLE spip_collections DROP COLUMN id_trad'],
 	];
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
@@ -51,7 +48,7 @@ function geol_albums_init() {
 				'id_admin' => $grappe['id_admin'],
 				'titre' => $grappe['titre'],
 				'descriptif' => $grappe['descriptif'],
-				'date' => $grappe['date']
+				'date' => $grappe['date'],
 			];
 
 			if ($grappe['type'] == 'album_perso') {
@@ -71,7 +68,11 @@ function geol_albums_init() {
 				// copie des liens de grappes_liens vers collections_liens pour les articles
 				$articles = sql_allfetsel('*', 'spip_grappes_liens', "objet = 'article' AND id_grappe = " . $grappe['id_grappe']);
 				foreach ($articles as $article) {
-					objet_associer(['collection' => $id_collection], [$article['objet'] => $article['id_objet']], ['rang' => $article['rang']]);
+					objet_associer(
+						['collection' => $id_collection],
+						[$article['objet'] => $article['id_objet']],
+						['rang' => $article['rang']]
+					);
 				}
 
 				// associer l'auteur id_admin de la grappe à la collection
@@ -86,13 +87,21 @@ function geol_albums_init() {
 				// maj des liens des forums attachés aux grappes
 				$forums = sql_allfetsel('id_forum', 'spip_forum', "objet = 'grappe' AND id_objet = " . $grappe['id_grappe']);
 				foreach ($forums as $forum) {
-					sql_updateq('spip_forum', ['objet' => 'collection', 'id_objet' => $id_collection], 'id_forum = ' . $forum['id_forum']);
+					sql_updateq(
+						'spip_forum',
+						['objet' => 'collection', 'id_objet' => $id_collection],
+						'id_forum = ' . $forum['id_forum']
+					);
 				}
 
 				// maj des liens des points gis attachés aux grappes
 				$points = sql_allfetsel('id_gis', 'spip_gis_liens', "objet = 'grappe' AND id_objet = " . $grappe['id_grappe']);
 				foreach ($points as $point) {
-					sql_updateq('spip_gis_liens', ['objet' => 'collection', 'id_objet' => $id_collection], 'id_gis = ' . $point['id_gis']);
+					sql_updateq(
+						'spip_gis_liens',
+						['objet' => 'collection', 'id_objet' => $id_collection],
+						'id_gis = ' . $point['id_gis']
+					);
 				}
 			}
 		}

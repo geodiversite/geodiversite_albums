@@ -14,7 +14,6 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
-
 /**
  * Action d'association d'un auteur à une collection dans la base de données dont
  * les informations de lien sont données soit en paramètre de l'action, soit
@@ -49,7 +48,11 @@ function action_associer_auteur_collection_dist($arg = null) {
 
 	if ($action != 'lier' and $action != 'delier') {
 		$err = _L('Aucune action possible fournie');
-	} elseif (!autoriser('associerauteurs', 'collection', $id_collection) || ($id_auteur != $GLOBALS['visiteur_session']['id_auteur'])) {
+	} elseif (!autoriser(
+		'associerauteurs',
+		'collection',
+		$id_collection
+	) || ($id_auteur != $GLOBALS['visiteur_session']['id_auteur'])) {
 		$err = _L('Pas autorisé à ajouter un auteur');
 	}
 	include_spip('action/editer_auteur');

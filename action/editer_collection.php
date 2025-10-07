@@ -35,7 +35,7 @@ function action_editer_collection_dist($arg = null) {
 	include_spip('inc/autoriser');
 
 	$err = '';
-	if (is_null($arg)) {
+	if ($arg === null) {
 		$securiser_action = charger_fonction('securiser_action', 'inc');
 		$arg = $securiser_action();
 	}
@@ -59,8 +59,8 @@ function action_editer_collection_dist($arg = null) {
 		if (autoriser('modifier', 'collection', $id_collection)) {
 			include_spip('action/editer_objet');
 			$err = objet_modifier('collection', $id_collection);
-		}else {
-			$err = _T('collection:info_non_autorise_modifier_collection', ['id_auteur' => $GLOBALS['visiteur_session']['id_auteur'],'id' => $id_collection]);
+		} else {
+			$err = _T('collection:info_non_autorise_modifier_collection', ['id_auteur' => $GLOBALS['visiteur_session']['id_auteur'], 'id' => $id_collection]);
 		}
 	}
 
@@ -68,7 +68,7 @@ function action_editer_collection_dist($arg = null) {
 		spip_log("echec editeur collection: $err", _LOG_ERREUR);
 	}
 
-	return [$id_collection,$err];
+	return [$id_collection, $err];
 }
 
 /**
@@ -88,30 +88,26 @@ function action_editer_collection_dist($arg = null) {
  *
  * @return int
  *     Identifiant de la nouvelle collection
- *
  */
 function collection_inserer() {
 	$champs = [
 		'statut' => 'publie',
-		'date' => date('Y-m-d H:i:s')
+		'date' => date('Y-m-d H:i:s'),
 	];
 
-	$id_auteur = (is_null(_request('id_auteur')) ? $GLOBALS['visiteur_session']['id_auteur'] : _request('id_auteur'));
+	$id_auteur = (_request('id_auteur') === null ? $GLOBALS['visiteur_session']['id_auteur'] : _request('id_auteur'));
 
 	if ($id_auteur) {
 		$champs['id_admin'] = $id_auteur;
 	}
 
 	// Envoyer aux plugins
-	$champs = pipeline(
-		'pre_insertion',
-		[
+	$champs = pipeline('pre_insertion', [
 			'args' => [
 				'table' => 'spip_collections',
 			],
-			'data' => $champs
-		]
-	);
+			'data' => $champs,
+		]);
 
 	$id = sql_insertq('spip_collections', $champs);
 
@@ -123,7 +119,7 @@ function collection_inserer() {
 					'table' => 'spip_collections',
 					'id_objet' => $id,
 				],
-				'data' => $champs
+				'data' => $champs,
 			]
 		);
 

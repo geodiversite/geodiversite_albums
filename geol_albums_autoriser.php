@@ -21,7 +21,7 @@ function geol_albums_autoriser() {
 
 // creer
 function autoriser_collection_creer_dist($faire, $type, $id, $qui, $opt) {
-	return in_array($qui['statut'], ['0minirezo', '1comite','6forum']);
+	return in_array($qui['statut'], ['0minirezo', '1comite', '6forum']);
 }
 
 // voir les fiches completes
@@ -38,7 +38,10 @@ function autoriser_collection_voir_dist($faire, $type, $id, $qui, $opt) {
  * -* les administrateurs du site
  */
 function autoriser_collection_lierobjet_dist($faire, $type, $id, $qui, $opt) {
-	return  collection_admin($id, $qui) or collection_auteur($id, $qui) or (($qui['statut'] == '0minirezo') and !$qui['restreint']);
+	return collection_admin($id, $qui) or collection_auteur(
+		$id,
+		$qui
+	) or (($qui['statut'] == '0minirezo') and !$qui['restreint']);
 }
 // modifier
 function autoriser_collection_modifier_dist($faire, $type, $id, $qui, $opt) {
@@ -61,7 +64,6 @@ function autoriser_collection_supprimer_dist($faire, $type, $id, $qui, $opt) {
 	return collection_admin($id, $qui) or (($qui['statut'] == '0minirezo') and !$qui['restreint']);
 }
 
-
 // associer (lier / delier)
 function autoriser_associercollections_dist($faire, $type, $id, $qui, $opt) {
 	return $qui['statut'] == '0minirezo' and !$qui['restreint'];
@@ -77,5 +79,5 @@ function autoriser_collection_associerauteurs_dist($faire, $type, $id, $qui, $op
 		return false;
 	}
 
-	return in_array($qui['statut'], ['0minirezo','1comite','6forum']);
+	return in_array($qui['statut'], ['0minirezo', '1comite', '6forum']);
 }

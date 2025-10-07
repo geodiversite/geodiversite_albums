@@ -23,7 +23,13 @@ function inc_collection_organiser_rangs_dist($id_collection) {
 	$medias = sql_allfetsel('*', 'spip_collections_liens', 'id_collection=' . intval($id_collection), '', 'rang ASC');
 	foreach ($medias as $media) {
 		if ($media['rang'] != $rang) {
-			$test = sql_updateq('spip_collections_liens', ['rang' => $rang], 'id_collection = ' . intval($media['id_collection']) . ' AND id_objet=' . intval($media['id_objet']) . ' AND objet="article"');
+			$test = sql_updateq(
+				'spip_collections_liens',
+				['rang' => $rang],
+				'id_collection = ' . intval($media['id_collection']) . ' AND id_objet=' . intval(
+					$media['id_objet']
+				) . ' AND objet="article"'
+			);
 		}
 		$rang++;
 	}

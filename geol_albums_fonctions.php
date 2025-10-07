@@ -28,7 +28,11 @@ function collection_auteur($id = 0, $qui = []) {
 	if (!$qui['id_auteur']) {
 		return false;
 	}
-	return $qui['id_auteur'] == sql_getfetsel('id_auteur', 'spip_auteurs_liens', 'objet="collection" AND id_objet=' . intval($id) . ' AND id_auteur=' . intval($qui['id_auteur']));
+	return $qui['id_auteur'] == sql_getfetsel(
+		'id_auteur',
+		'spip_auteurs_liens',
+		'objet="collection" AND id_objet=' . intval($id) . ' AND id_auteur=' . intval($qui['id_auteur'])
+	);
 }
 
 /**

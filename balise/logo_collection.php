@@ -21,9 +21,9 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  *
  * Appelle la fonction logo_collection pour la génération finale
  *
- * @param Champ $p
+ * @param object $p
  * 		Pile au niveau de la balise
- * @return Champ
+ * @return object
  *		Pile complétée par le code à générer
  */
 function balise_LOGO_COLLECTION_dist($p) {
@@ -105,7 +105,7 @@ function balise_LOGO_COLLECTION_dist($p) {
  * 		Indique si on doit retourner uniquement le nom du fichier (-1) ou la balise complète du logo (0)
  * @param string $lien
  * 		URL facultative d'un lien entourant le logo
- * @param Champ $p
+ * @param object $p
  * @param string $suite
  * @return string
  * 		Le code html à afficher pour le logo

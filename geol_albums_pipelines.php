@@ -78,13 +78,8 @@ function collections_optimiser_base_disparus($flux) {
  * 		La liste des types de collections complétée
  */
 function geol_albums_collections_liste_types($flux) {
-	if (!is_array($flux)) {
-		$flux = [];
-	}
-
 	$flux['perso'] = _T('collection:type_perso');
 	$flux['coop'] = _T('collection:type_coop');
-
 	return $flux;
 }
 

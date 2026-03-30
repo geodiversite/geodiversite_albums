@@ -31,7 +31,7 @@ function formulaires_creer_collection_rapide_verifier_dist($retour = '') {
 }
 
 function formulaires_creer_collection_rapide_traiter_dist($retour = '') {
-	$res = formulaires_editer_objet_traiter('collection', 'oui', '', '', $retour);
+	$res = formulaires_editer_objet_traiter('collection', 'oui', 0, 0, $retour);
 	if (intval($res['id_collection']) && is_numeric($res['id_collection'])) {
 		include_spip('action/editer_objet');
 		$err = objet_instituer('collection', $res['id_collection'], ['statut' => 'publie']);

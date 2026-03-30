@@ -43,7 +43,7 @@ function formulaires_editer_collection_charger_dist(
 	$valeurs = formulaires_editer_objet_charger(
 		'collection',
 		$id_collection,
-		'',
+		0,
 		$lier_trad,
 		$retour,
 		$config_fonc,
@@ -88,7 +88,7 @@ function formulaires_editer_collection_traiter_dist(
 	$res = formulaires_editer_objet_traiter(
 		'collection',
 		$id_collection,
-		'',
+		0,
 		$lier_trad,
 		$retour,
 		$config_fonc,

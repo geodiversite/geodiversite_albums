@@ -11,7 +11,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  *
  * @param string $nom_meta_base_version
  * 		Le nom de la meta d'installation
- * @param float $version_cible
+ * @param string $version_cible
  * 		Le numéro de version vers laquelle mettre à jour
  */
 function geol_albums_upgrade($nom_meta_base_version, $version_cible) {

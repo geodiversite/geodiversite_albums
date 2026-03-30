@@ -7,7 +7,25 @@ parameters:
 			path: action/associer_auteur_collection.php
 
 		-
+			message: '#^Parameter \#2 \$args of function _T expects array\<string, string\>, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: action/editer_collection.php
+
+		-
 			message: '#^Function generer_generer_url_arg not found\.$#'
 			identifier: function.notFound
 			count: 1
 			path: balise/logo_collection.php
+
+		-
+			message: '#^Parameter \#2 \$exp of function sql_updateq expects array\<string, string\>, array\<string, int\<1, max\>\|string\> given\.$#'
+			identifier: argument.type
+			count: 2
+			path: geol_albums_administrations.php
+
+		-
+			message: '#^Parameter \#2 \$exp of function sql_updateq expects array\<string, string\>, array\<string, int\<1, max\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: inc/collection_organiser_rangs.php

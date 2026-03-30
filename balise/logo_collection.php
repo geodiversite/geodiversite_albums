@@ -95,7 +95,7 @@ function balise_LOGO_COLLECTION_dist($p) {
  *
  * @param string $id_objet
  * 		Le nom du champ de l'identifiant numérique de la collection (id_collection)
- * @param int $_id_objet
+ * @param string $_id_objet
  * 		L'identifiant numérique de la collection dont on cherche le logo
  * @param string $type
  * 		Le type d'objet dont on cherche le logo (collection)

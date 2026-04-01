@@ -95,7 +95,7 @@ function collection_inserer() {
 		'date' => date('Y-m-d H:i:s'),
 	];
 
-	$id_auteur = (_request('id_auteur') === null ? $GLOBALS['visiteur_session']['id_auteur'] : _request('id_auteur'));
+	$id_auteur = (_request('id_auteur') ?? $GLOBALS['visiteur_session']['id_auteur']);
 
 	if ($id_auteur) {
 		$champs['id_admin'] = $id_auteur;

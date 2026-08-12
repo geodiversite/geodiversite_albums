@@ -103,11 +103,11 @@ function collection_inserer() {
 
 	// Envoyer aux plugins
 	$champs = pipeline('pre_insertion', [
-			'args' => [
-				'table' => 'spip_collections',
-			],
-			'data' => $champs,
-		]);
+		'args' => [
+			'table' => 'spip_collections',
+		],
+		'data' => $champs,
+	]);
 
 	$id = sql_insertq('spip_collections', $champs);
 

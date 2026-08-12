@@ -59,7 +59,7 @@ function geol_albums_declarer_tables_objets_sql($tables) {
 		'champs_versionnes' => ['titre', 'descriptif', 'type_collection'],
 		'rechercher_champs' => ['titre' => 8, 'descriptif' => 2],
 		'tables_jointures' => [
-			#'spip_collections_liens'
+			# 'spip_collections_liens'
 		],
 		'statut_textes_instituer' => [
 			'publie' => 'collection:texte_statut_publie',

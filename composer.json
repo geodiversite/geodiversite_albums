@@ -3,6 +3,9 @@
     "description": "Complément albums pour Géodiversité",
     "license": "GPL-3.0-or-later",
     "type": "spip-plugin",
+    "require": {
+        "php": "^7.4 || ^8.0"
+    },
     "require-dev": {
         "spip-league/kernel": "^1.x-dev",
         "spip-league/qa-tools": "^1.0",
